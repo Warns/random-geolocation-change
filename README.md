@@ -1,37 +1,60 @@
-## Welcome to GitHub Pages
+## Hisham Muhammed Project
 
-You can use the [editor on GitHub](https://github.com/Warns/hisham-project/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+Show my current location.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Showing User's Location on Google Map</title>
+<script src="https://maps.google.com/maps/api/js?sensor=false"></script>
+<script>
+function showPosition() {
+    if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showMap, showError);
+    } else {
+        alert("Sorry, your browser does not support HTML5 geolocation.");
+    }
+}
  
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Warns/hisham-project/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+// Define callback function for successful attempt
+function showMap(position) {
+    // Get location data
+    lat = position.coords.latitude;
+    long = position.coords.longitude;
+    var latlong = new google.maps.LatLng(lat, long);
+    
+    var myOptions = {
+        center: latlong,
+        zoom: 16,
+        mapTypeControl: true,
+        navigationControlOptions: {
+            style:google.maps.NavigationControlStyle.SMALL
+        }
+    }
+    
+    var map = new google.maps.Map(document.getElementById("embedMap"), myOptions);
+    var marker = new google.maps.Marker({ position:latlong, map:map, title:"You are here!" });
+}
+ 
+// Define callback function for failed attempt
+function showError(error) {
+    if(error.code == 1) {
+        result.innerHTML = "You've decided not to share your position, but it's OK. We won't ask you again.";
+    } else if(error.code == 2) {
+        result.innerHTML = "The network is down or the positioning service can't be reached.";
+    } else if(error.code == 3) {
+        result.innerHTML = "The attempt timed out before it could get the location data.";
+    } else {
+        result.innerHTML = "Geolocation failed due to unknown error.";
+    }
+}
+</script>
+</head>
+<body>
+    <button type="button" onclick="showPosition();">Show My Position on Google Map</button>
+    <div id="embedMap" style="width: 400px; height: 300px;">
+        <!--Google map will be embedded here-->
+    </div>
+</body>
+</html>
