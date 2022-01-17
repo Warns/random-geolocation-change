@@ -1,7 +1,9 @@
+@import "{{ site.theme }}";
+
 <!DOCTYPE html> 
 <html> 
     <head> 
-      <title>Geolocation API</title> 
+      <title>Hisham VPN Geolocation</title> 
      </head> 
     <body> 
        <h2>Find Your Location in below Map</h2> 
