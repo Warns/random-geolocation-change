@@ -1,21 +1,14 @@
-## Welcome to GitHub Pages
+## Hisham VPN Geolocation
 
-You can use the [editor on GitHub](https://github.com/Warns/hisham-project/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+This project is using [Google's Geolocation API](https://developers.google.com/maps/documentation/javascript/geolocation) to locate the current location of the viewer.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-<!DOCTYPE html> 
 <html> 
-    <head> 
+    <!-- <head> 
       <title>Hisham VPN Geolocation</title> 
-     </head> 
+     </head>  -->
     <body> 
-       <h2>Find Your Location in below Map</h2> 
-        <button onclick="getlocation();"> Show Position</button> 
+       <h2>Check my current location</h2> 
+        <button onclick="getlocation();">Show Position</button> 
         <div id="demo" style="width: 600px; height: 400px; margin-left: 200px;"></div> 
        
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4xtEoXBaKsiQZ6smXXbU7ufYNxeTOBFc&v=weekly"> </script> 
@@ -65,7 +58,7 @@ Markdown is a lightweight and easy-to-use syntax for styling your writing. It in
     </body> 
 </html>     
  
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+<!-- For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 
 ### Jekyll Themes
 
@@ -73,4 +66,4 @@ Your Pages site will use the layout and styles from the Jekyll theme you have se
 
 ### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out. -->
