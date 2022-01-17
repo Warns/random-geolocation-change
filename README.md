@@ -8,23 +8,62 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
+<!DOCTYPE html> 
+<html> 
+    <head> 
+      <title>Hisham VPN Geolocation</title> 
+     </head> 
+    <body> 
+       <h2>Find Your Location in below Map</h2> 
+        <button onclick="getlocation();"> Show Position</button> 
+        <div id="demo" style="width: 600px; height: 400px; margin-left: 200px;"></div> 
+       
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4xtEoXBaKsiQZ6smXXbU7ufYNxeTOBFc&v=weekly"> </script> 
 
-# Header 1
-## Header 2
-### Header 3
+        <script type="text/javascript"> 
+        function getlocation(){ 
+            if(navigator.geolocation){ 
+                navigator.geolocation.getCurrentPosition(showPos, showErr); 
+            }
+            else{
+                alert("Sorry! your Browser does not support Geolocation API")
+            }
+        } 
+        //Showing Current Poistion on Google Map
+        function showPos(position){ 
+            latt = position.coords.latitude; 
+            long = position.coords.longitude; 
+            var lattlong = new google.maps.LatLng(latt, long); 
+            var myOptions = { 
+                center: lattlong, 
+                zoom: 15, 
+                mapTypeControl: true, 
+                navigationControlOptions: {style:google.maps.NavigationControlStyle.SMALL} 
+            } 
+            var maps = new google.maps.Map(document.getElementById("demo"), myOptions); 
+            var markers = 
+            new google.maps.Marker({position:lattlong, map:maps, title:"You are here!"}); 
+        } 
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
+        //Handling Error and Rejection
+             function showErr(error) {
+              switch(error.code){
+              case error.PERMISSION_DENIED:
+             alert("User denied the request for Geolocation API.");
+              break;
+             case error.POSITION_UNAVAILABLE:
+             alert("USer location information is unavailable.");
+            break;
+            case error.TIMEOUT:
+            alert("The request to get user location timed out.");
+            break;
+           case error.UNKNOWN_ERROR:
+            alert("An unknown error occurred.");
+            break;
+           }
+        }        </script> 
+    </body> 
+</html>     
  
 For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 
