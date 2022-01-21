@@ -1,76 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/hisham-project/assets/css/style.css?v=2a15a63f86de7de36a5c12791fe9f63d86a0774a">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup theme-color -->
+<!-- start theme color meta headers -->
+<meta name="theme-color" content="#151515">
+<meta name="msapplication-navbutton-color" content="#151515">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- end theme color meta headers -->
+
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/hisham-project/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Hisham VPN Geolocation | hisham-project</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Hisham VPN Geolocation" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://warns.github.io/hisham-project/" />
+<meta property="og:url" content="https://warns.github.io/hisham-project/" />
+<meta property="og:site_name" content="hisham-project" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Hisham VPN Geolocation" />
+<script type="application/ld+json">
+{"url":"https://warns.github.io/hisham-project/","@type":"WebSite","headline":"Hisham VPN Geolocation","name":"hisham-project","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <a id="a-title" href="/hisham-project/">
+          <h1>hisham-project</h1>
+        </a>
+        <h2></h2>
+
+        <section id="downloads">
+          
+          <a href="https://github.com/Warns/hisham-project" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h2 id="hisham-vpn-geolocation">Hisham VPN Geolocation</h2>
+
+<p>This project is using <a href="https://developers.google.com/maps/documentation/javascript/geolocation">Google’s Geolocation API</a> to locate the current location of the viewer.</p>
+
 <html>
-    <!-- <head> 
-      <title>Hisham VPN Geolocation</title> 
-     </head>  -->
-    <body>
-        <header>
-            <div class="container">
-                <a id="a-title" href="/hisham-project/">
-                    <h1>hisham-project</h1>
-                </a>
-                <h2></h2>
+  <head>
+    <title>Hisham VPN Geolocation</title>
+  </head>
+  <body>
+    <h2>Check my current location</h2>
+    <button onclick="getlocation();">Show Position</button>
+    <div id="demo" style="width: 600px; height: 400px; margin-left: 200px;"></div>
 
-                <section id="downloads">
-                    <a href="https://github.com/Warns/hisham-project" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-                </section>
-            </div>
-        </header>
-        <div class="container">
-            <section id="main_content">
-                <h2 id="hisham-vpn-geolocation">Hisham VPN Geolocation</h2>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4xtEoXBaKsiQZ6smXXbU7ufYNxeTOBFc&amp;v=weekly"></script>
 
-                <p>This project is using <a href="https://developers.google.com/maps/documentation/javascript/geolocation">Google’s Geolocation API</a> to locate the current location of the viewer.</p>
+    <script type="text/javascript">
+      function getlocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPos, showErr);
+        } else {
+          alert("Sorry! your Browser does not support Geolocation API");
+        }
+      }
+      //Showing Current Poistion on Google Map
+      function showPos(position) {
+        latt = position.coords.latitude;
+        long = position.coords.longitude;
+        var lattlong = new google.maps.LatLng(latt, long);
+        var myOptions = {
+          center: lattlong,
+          zoom: 15,
+          mapTypeControl: true,
+          navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL },
+        };
+        var maps = new google.maps.Map(document.getElementById("demo"), myOptions);
+        var markers = new google.maps.Marker({ position: lattlong, map: maps, title: "You are here!" });
+      }
 
-                <title>Hisham VPN Geolocation</title>
+      //Handling Error and Rejection
+      function showErr(error) {
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            alert("User denied the request for Geolocation API.");
+            break;
+          case error.POSITION_UNAVAILABLE:
+            alert("USer location information is unavailable.");
+            break;
+          case error.TIMEOUT:
+            alert("The request to get user location timed out.");
+            break;
+          case error.UNKNOWN_ERROR:
+            alert("An unknown error occurred.");
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>
 
-                <h2>Check my current location</h2>
-                <button onclick="getlocation();">Show Position</button>
-                <div id="demo" style="width: 600px; height: 400px; margin-left: 200px;"></div>
+<!-- For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4xtEoXBaKsiQZ6smXXbU7ufYNxeTOBFc&amp;v=weekly"></script>
+### Jekyll Themes
 
-                <script type="text/javascript">
-                    function getlocation() {
-                        if (navigator.geolocation) {
-                            navigator.geolocation.getCurrentPosition(showPos, showErr);
-                        } else {
-                            alert("Sorry! your Browser does not support Geolocation API");
-                        }
-                    }
-                    //Showing Current Poistion on Google Map
-                    function showPos(position) {
-                        latt = position.coords.latitude;
-                        long = position.coords.longitude;
-                        var lattlong = new google.maps.LatLng(latt, long);
-                        var myOptions = {
-                            center: lattlong,
-                            zoom: 15,
-                            mapTypeControl: true,
-                            navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL },
-                        };
-                        var maps = new google.maps.Map(document.getElementById("demo"), myOptions);
-                        var markers = new google.maps.Marker({ position: lattlong, map: maps, title: "You are here!" });
-                    }
+Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Warns/hisham-project/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-                    //Handling Error and Rejection
-                    function showErr(error) {
-                        switch (error.code) {
-                            case error.PERMISSION_DENIED:
-                                alert("User denied the request for Geolocation API.");
-                                break;
-                            case error.POSITION_UNAVAILABLE:
-                                alert("USer location information is unavailable.");
-                                break;
-                            case error.TIMEOUT:
-                                alert("The request to get user location timed out.");
-                                break;
-                            case error.UNKNOWN_ERROR:
-                                alert("An unknown error occurred.");
-                                break;
-                        }
-                    }
-                </script>
-            </section>
-        </div>
-    </body>
+### Support or Contact
+
+Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out. -->
+
+      </section>
+    </div>
+  </body>
 </html>
