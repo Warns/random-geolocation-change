@@ -4,7 +4,7 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/hisham-project/assets/css/style.css?v=1.0">
+    <link rel="stylesheet" href="/hisham-project/assets/css/style.css?v=2a15a63f86de7de36a5c12791fe9f63d86a0774a">
     <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
 
 <!-- Setup theme-color -->
@@ -44,10 +44,7 @@
   <body>
 
     <header>
-      <div class="container" style="
-    padding: 30px;
-    padding-left: 100px;
-">
+      <div class="container">
         <a id="a-title" href="/hisham-project/">
           <h1>hisham-project</h1>
         </a>
@@ -61,13 +58,10 @@
     </header>
 
     <div class="container">
-      <section id="main_content" style="
-    padding: 30px;
-    padding-left: 100px;
-">
+      <section id="main_content">
         <h2 id="hisham-vpn-geolocation">Hisham VPN Geolocation</h2>
 
-<p>I built this project using <a href="https://developers.google.com/maps/documentation/javascript/geolocation">Google’s Geolocation API</a> to locate the current location of the viewer.</p>
+<p style="padding-left: 100px;">I built this project using <a href="https://developers.google.com/maps/documentation/javascript/geolocation">Google’s Geolocation API</a> to locate the current location of the viewer.</p>
 
 <html>
   <head>
@@ -75,8 +69,8 @@
   </head>
   <body>
     <h2>Check my current location</h2>
-    <button onclick="getlocation();">Show Position</button>
-    <div id="demo" style="height: 400p; with: 90%"></div>
+    <button onclick="getlocation();" style="margin: 50px 0px 30px 100px;">Show Position</button>
+    <div id="demo" style="width: 1335px;height: 400px;margin-left: 100px;position: relative;overflow: hidden;"></div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4xtEoXBaKsiQZ6smXXbU7ufYNxeTOBFc&amp;v=weekly"></script>
 
