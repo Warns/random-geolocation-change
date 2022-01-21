@@ -104,6 +104,7 @@ body {
 }
 .container {
     width: 100%;
+    max-width: -1px;
     margin: 0 auto;
 }
 section {
