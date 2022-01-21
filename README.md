@@ -1,7 +1,7 @@
 ## Hisham VPN Geolocation
 
 This project is using [Google's Geolocation API](https://developers.google.com/maps/documentation/javascript/geolocation) to locate the current location of the viewer.
-```
+```html
 <html>
   <head>
     <title>Hisham VPN Geolocation</title>
