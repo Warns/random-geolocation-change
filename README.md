@@ -2,7 +2,6 @@
 
 This project is using [Google's Geolocation API](https://developers.google.com/maps/documentation/javascript/geolocation) to locate the current location of the viewer.
 
-```html
 <html> 
     <!-- <head> 
       <title>Hisham VPN Geolocation</title> 
@@ -58,7 +57,7 @@ This project is using [Google's Geolocation API](https://developers.google.com/m
         }        </script> 
     </body> 
 </html>     
- ```
+
 <!-- For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 
 ### Jekyll Themes
