@@ -77,7 +77,6 @@
   <body>
     <h2 style="font-family: monospace;">Check my current location</h2>
     <button class="w3-button w3-red" onclick="getlocation();" style="margin: 0px 0px 20px 0px; font-family: monospace;">Show Position</button>
-    <button class="w3-button w3-red" onclick="getlocationVpn();" style="margin: 0px 0px 20px 0px; font-family: monospace;">Show Position VPN</button>
     <div id="demo" style="height: 400px;position: relative;overflow: hidden;"></div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4xtEoXBaKsiQZ6smXXbU7ufYNxeTOBFc&amp;v=weekly"></script>
@@ -123,10 +122,13 @@
         }
       }
     </script>
+  </body>
 
-<!--######################-->
-
-<div id="demo1" style="height: 400px;position: relative;overflow: hidden;"></div>
+  <!---###################-->
+  <body>
+    <h2 style="font-family: monospace;">Check my current location</h2>
+    <button class="w3-button w3-red" onclick="getlocationVpn();" style="margin: 0px 0px 20px 0px; font-family: monospace;">Show Position</button>
+    <div id="demo1" style="height: 400px;position: relative;overflow: hidden;"></div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4xtEoXBaKsiQZ6smXXbU7ufYNxeTOBFc&amp;v=weekly"></script>
 
@@ -140,8 +142,8 @@
       }
       //Showing Current Poistion on Google Map
       function showPos(position) {
-        latt = 30;
-        long = -105;
+        latt = position.coords.latitude;
+        long = position.coords.longitude;
         var lattlong = new google.maps.LatLng(latt, long);
         var myOptions = {
           center: lattlong,
@@ -172,6 +174,7 @@
       }
     </script>
   </body>
+
 </html>
 
 <!-- For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
