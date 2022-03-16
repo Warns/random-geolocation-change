@@ -103,32 +103,37 @@
           style="font-family: monospace; padding-top: 10px"
           id="vpn-geolocation"
         >
-          Hisham VPN Geolocation
+          Hisham, Ammar, Kenan VPN Geolocation Project
         </h2>
 
         <p style="font-family: monospace; color: white">
-          I built this project using
+          We built this project using
           <a
             style="color: dodgerblue"
             href="https://developers.google.com/maps/documentation/javascript/geolocation"
             >Google’s Geolocation API</a
           >
-          to locate the current location of the viewer.
+          and 
+          <a
+          style="color: dodgerblue"
+          href="https://nordvpn.com"
+          >NordVPN API</a
+          >
+          to locate the current location of the viewer and the location based on the VPN server location.
         </p>
 
         <html>
           <head>
-            <title>Hisham VPN Geolocation</title>
+            <title>VPN Geolocation Project</title>
           </head>
           <body>
             <h2 style="font-family: monospace">Check my current location</h2>
-            <!-- <button type="button"><a style="color: blue;" href="https://github.com/Warns/vpn-project" style="font-family: monospace; text-decoration:none"> View on GitHub <i class="fa fa-github"></i></a></button> -->
             <button
               class="w3-button w3-red"
               onclick="getlocation();"
               style="margin: 0px 0px 20px 0px; font-family: monospace"
             >
-              Show Position <i class="fas fa-map-marker-alt"></i>
+              Show Current Position <i class="fas fa-map-marker-alt"></i>
             </button>
 
             <button
@@ -136,7 +141,7 @@
               onclick="getAnotherlocation();"
               style="margin: 0px 0px 20px 0px; font-family: monospace"
             >
-              Connect to Another VPN <i class="fas fa-map-marker-alt"></i>
+              Connect to a VPN Server <i class="fas fa-map-marker-alt"></i>
             </button>
             <div
               id="demo"
