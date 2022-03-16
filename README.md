@@ -14,7 +14,7 @@ This project is using [Google's Geolocation API](https://developers.google.com/m
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4xtEoXBaKsiQZ6smXXbU7ufYNxeTOBFc&v=weekly"></script>
 
     <script type="text/javascript">
-      <!-- This function will show your current location -->
+      // This function will show your current location
       function getlocation() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showPos, showErr);
