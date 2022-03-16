@@ -116,13 +116,19 @@
 
           var position = {coords:{latitude:currentVPNlocation.coords.lat,longitude:currentVPNlocation.coords.lng}};
 
-          log.innerHTML = '<p>Your current geolocation is:</p>'
+          log.innerHTML = '<p>Connecting to VPN server...</p>'
+
+          setTimeout(function(){
+
+            log.innerHTML = '<p>Your current geolocation is:</p>'
                           + '<p>Latitude: '+ currentVPNlocation.coords.lat + '</p>'
                           + '<p>Longitude: '+ currentVPNlocation.coords.lng + '</p>' 
                           + '<p>City: '+ currentVPNlocation.city + '</p>';
-          showPos(position);
 
-          setTimeout(function(){ canClick = true; }, 2000);
+                          showPos(position);
+
+            canClick = true; 
+          }, 2000 + Math.random() * 2000);
         }
       }
 
