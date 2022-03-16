@@ -48,7 +48,7 @@
       {
         "url": "https://warns.github.io/vpn-project/",
         "@type": "WebSite",
-        "headline": "Hisham VPN Geolocation",
+        "headline": "Hisham, Ammar, Kenan VPN Geolocation Project",
         "name": "vpn-project",
         "@context": "https://schema.org"
       }
@@ -128,6 +128,7 @@
           </head>
           <body>
             <h2 style="font-family: monospace">Check my current location</h2>
+            <!-- ADDING BUTTONS TO SHOW LOCATION DEPENDING ON CURRENT LOCATION AND VPN SERVER -->
             <button
               class="w3-button w3-red"
               onclick="getlocation();"
@@ -149,34 +150,38 @@
             ></div>
 
             <div class="log"></div>
-
+            <!-- CALLING GOOGLE GEOLOCATION API TO USE FOR MAP NAVIGATION DEPENDING ON VPN LOCATION -->
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4xtEoXBaKsiQZ6smXXbU7ufYNxeTOBFc&amp;v=weekly"></script>
 
             <script type="text/javascript">
               var canClick = true;
               var log = document.querySelector(".log");
               var current;
-
+              // THIS FUNCTION WILL REQUEST ACCESS TO VIEW YOUR CURRENT LOCATION
               function getlocation() {
+              // IF YOUR BROWSER ALLOWS LOCATION SHARING THEN IT WILL WORK
                 if (navigator.geolocation) {
                   navigator.geolocation.getCurrentPosition(showPos, showErr);
                   log.innerHTML = "<p>Connected to your location...</p>";
+              // ELSE IF YOUR BROWSER DOES NOT SUPPORT LOCATION SHARING THEN IT WILL ERROR WITH THE FOLLOWING MESSAGE
                 } else {
                   alert("Sorry! your Browser does not support Geolocation API");
                 }
               }
 
+              // THIS FUNCTION WILL USE NORDVPN SERVERS TO CONNECT TO A VPN LOCATION
               function getAnotherlocation() {
                 if (canClick) {
                   canClick = false;
-
+                  // THIS IS DECLARING THE VARIABLE TO USE FOR THE VPN SERVERS IN THE API
                   var current = VPNConnector.getVPNServers(
                     "https://nordvpn.com/api/server"
                   );
                   var VPNlocations = locations;
 
                   var currentVPNlocation = VPNlocations[current];
-
+                  
+                  // HERE WE ARE ASSIGNING THE POSITION DEPENDING ON LATITUDE AND LONGITUDE IN THE VPN SERVERS.
                   var position = {
                     coords: {
                       latitude: currentVPNlocation.coords.lat,
@@ -186,6 +191,7 @@
 
                   log.innerHTML = "<p>Connecting to VPN server...</p>";
 
+                  // HERE WE ARE SHOWING THE CURRENT CONNECTED VPN SERVERS AS LOG CONSOLE OUTPUT
                   setTimeout(function () {
                     log.innerHTML =
                       "<p>Your current geolocation is:</p>" +
@@ -206,11 +212,12 @@
                 }
               }
 
-              //Showing Current Poistion on Google Map
+              // THIS FUNCTION IS RESPONSIBLE FOR SHOWING THE LOCATION OF THE VPN SERVER ON THE MAP
               function showPos(position) {
                 latt = position.coords.latitude;
                 long = position.coords.longitude;
                 var lattlong = new google.maps.LatLng(latt, long);
+                // THIS VARIABLE IS RESPONSIBLE FOR THE SIZE OF THE MAP AND ZOOM LEVEL
                 var myOptions = {
                   center: lattlong,
                   zoom: 10,
@@ -223,6 +230,8 @@
                   document.getElementById("demo"),
                   myOptions
                 );
+                
+                // THIS VARIABLE IS ADDING THE MARKER ON THE MAP TO SHOW THE EXACT LOCATION
                 var markers = new google.maps.Marker({
                   position: lattlong,
                   map: maps,
@@ -230,7 +239,7 @@
                 });
               }
 
-              //Handling Error and Rejection
+              // THIS FUNCTION HANDLES ANY ERRORS THAT HAPPENS ON THE FUNCTIONS ABOVE DEPENDING ON CASES
               function showErr(error) {
                 switch (error.code) {
                   case error.PERMISSION_DENIED:
